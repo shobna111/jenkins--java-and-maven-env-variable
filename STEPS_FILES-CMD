@@ -1,4 +1,5 @@
 # installing JAVA-11
+yum update -y
 amazon-linux-extras install epel               # to install all library
 amazon-linux-extras install java-openjdk11     # to install java
 find / -name java-11*   or find / -name jvm    # to find path of JAVA
