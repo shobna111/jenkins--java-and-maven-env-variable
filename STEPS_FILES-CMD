@@ -6,11 +6,11 @@ find / -name java-11*   or find / -name jvm    # to find path of JAVA
 ------------------------------------
 # to install MAVEN-
 cd /opt
-wget wget https://dlcdn.apache.org/maven/maven-3/3.9.7/binaries/apache-maven-3.9.7-bin.tar.gz
-tar -xvzf apache-maven-3.9.7-bin.tar.gz
-mv apache-maven-3.9.7 mave
-cd maven/  (ll)
-cd bin/
+wget wget https://dlcdn.apache.org/maven/maven-3/3.9.7/binaries/apache-maven-3.9.7-bin.tar.gz  # downloading maven
+tar -xvzf apache-maven-3.9.7-bin.tar.gz    # extracting maven
+mv apache-maven-3.9.7 maven                # renameing apachemaven into maven
+cd maven/  (ll)                            # go to maven folder
+cd bin/                                    # go to bin and check maven version
 ./mvn -v  # to check maven version, but maven will work in maven file only. so to overcome have to set ENV-Variable'
 -------------------------------------------------------
 # set Env- variable-
