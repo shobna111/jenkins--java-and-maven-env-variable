@@ -1,9 +1,12 @@
+JAVA-----------------------------------------------------------------
 # installing JAVA-11
 yum update -y
-amazon-linux-extras install epel               # to install all library
-amazon-linux-extras install java-openjdk11     # to install java
-find / -name java-11*   or find / -name jvm    # to find path of JAVA
-------------------------------------
+amazon-linux-extras install epel  -y             # to install all library
+amazon-linux-extras install java-openjdk11 -y    # to install java
+find / -name java-11*   or find / -name jvm      # to find path of JAVA
+
+
+MAVEN---------------------------------------------------------------
 # to install MAVEN-
 cd /opt
 wget wget https://dlcdn.apache.org/maven/maven-3/3.9.7/binaries/apache-maven-3.9.7-bin.tar.gz  # downloading maven
@@ -12,7 +15,8 @@ mv apache-maven-3.9.7 maven                # renameing apachemaven into maven
 cd maven/  (ll)                            # go to maven folder
 cd bin/                                    # go to bin and check maven version
 ./mvn -v  # to check maven version, but maven will work in maven file only. so to overcome have to set ENV-Variable'
--------------------------------------------------------
+
+ENV-VARIABLE-------------------------------------------------------
 # set Env- variable-
 cd (make root)
 vi .bash_profile
@@ -24,10 +28,56 @@ vi .bash_profile
 
 source .bash_profile  # to make this changes configured
 mvn -v (now it will show outside also)
-----------------------------------------------------
+
+JENKINS----------------------------------------------------------------
 # install JENKINS-
   sudo wget -O /etc/yum.repos.d/jenkins.repo     https://pkg.jenkins.io/redhat-stable/jenkins.repo
   rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
   sudo yum install jenkins -y
   sudo systemctl enable jenkins
   sudo systemctl start jenkins
+
+
+TOMCAT------------------------------------------------------------------
+# install TOMCAT-
+# create a new EC2 and consider this as TOMCAT server-
+
+amazon-linux-extras install java-openjdk11 -y   -install java
+java -version
+cd /opt/                                         - go to opt folder
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.89/bin/apache-tomcat-9.0.89.tar.gz        -download tomcat
+ls
+tar -xvzf apache-tomcat-9.0.89.tar.gz - extract tomcat 
+ls
+mv apache-tomcat-9.0.89 tomcat - move apachetomcat into tomcat
+ls
+cd tomcat/
+ls
+cd bin/
+ll
+./startup.sh    - start tomcat
+machineIP:8080/ # to check web UI
+
+# u r not supposed to login into manager-app, so we have to change context.xml file and then we can able to login.
+
+-------------NEXT STEP---------------------------
+# give permission to user to login from outside
+find / -name context.xml    # checking where is context.xml file, once you get, update-manager & host-manager file only,. rest docs and example can leave.
+
+vi /opt/tomcat/webapps/host-manager/META-INF/context.xml  - open this file and comment value section it by using, <!-- to initial line &, --> to closing line
+vi /opt/tomcat/webapps/manager/META-INF/context.xml   -- open this file and comment value section it by using, <!-- to initial line &, --> to closing line
+./startup.sh --- start the tomcat and this time you are able to login manager-app
+./shutdown.sh   -- stop the tomcat.
+----------------NEXT STEP --------------------------
+
+--- to create user and password to login in manager app-
+cd ..     -change present directory to tomcat directory
+cd conf/
+
+
+
+
+
+
+
+
