@@ -1,0 +1,32 @@
+# installing JAVA-11
+amazon-linux-extras install epel               # to install all library
+amazon-linux-extras install java-openjdk11     # to install java
+find / -name java-11*   or find / -name jvm    # to find path of JAVA
+------------------------------------
+# to install MAVEN-
+cd /opt
+wget wget https://dlcdn.apache.org/maven/maven-3/3.9.7/binaries/apache-maven-3.9.7-bin.tar.gz
+tar -xvzf apache-maven-3.9.7-bin.tar.gz
+mv apache-maven-3.9.7 mave
+cd maven/  (ll)
+cd bin/
+./mvn -v  # to check maven version, but maven will work in maven file only. so to overcome have to set ENV-Variable'
+-------------------------------------------------------
+# set Env- variable-
+cd (make root)
+vi .bash_profile
+     set-   
+               M2_HOME=/opt/maven
+               M2=/opt/maven/bin
+               JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.23.0.9-2.amzn2.0.1.x86_64
+   and         PATH=$PATH:$HOME/bin:$JAVA_HOME:$M2_HOME:$M2
+
+source .bash_profile  # to make this changes configured
+mvn -v (now it will show outside also)
+----------------------------------------------------
+# install JENKINS-
+  sudo wget -O /etc/yum.repos.d/jenkins.repo     https://pkg.jenkins.io/redhat-stable/jenkins.repo
+  rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+  sudo yum install jenkins -y
+  sudo systemctl enable jenkins
+  sudo systemctl start jenkins
