@@ -9,7 +9,7 @@ find / -name java-11*   or find / -name jvm      # to find path of JAVA
 MAVEN---------------------------------------------------------------
 # to install MAVEN-
 cd /opt
-wget wget https://dlcdn.apache.org/maven/maven-3/3.9.7/binaries/apache-maven-3.9.7-bin.tar.gz  # downloading maven
+wget https://dlcdn.apache.org/maven/maven-3/3.9.7/binaries/apache-maven-3.9.7-bin.tar.gz  # downloading maven
 tar -xvzf apache-maven-3.9.7-bin.tar.gz    # extracting maven
 mv apache-maven-3.9.7 maven                # renameing apachemaven into maven
 cd maven/  (ll)                            # go to maven folder
